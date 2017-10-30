@@ -56,3 +56,22 @@ workflows:
       - job2:
           requires:
             - job1
+      - job3:
+          requires:
+            - job1
+  branch_workflow:
+    triggers:
+      - schedule:
+          cron: "11 * * * *"
+          filters:
+            branches:
+              only:
+                - branch
+    jobs:
+      - job1
+      - job2:
+          requires:
+            - job1
+      - job3:
+          requires:
+            - job1
